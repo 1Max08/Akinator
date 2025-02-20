@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion</title>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+<body>
+    <a href="register.php">Création de compte</a>
+    <a href="login.php">Se connecter</a>
+    <main class="contact-form">
+    <form action="register.php" method="POST">
+        <label for="email">Username:</label>
+        <input type="text" id="username" name="username" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="password">Mot de passe:</label>
+        <input type="password" id="password" name="password" required>
+        
+        <button type="submit">Se connecter</button>
+    </form>
+    <?php if (isset($error)) { echo "<p>$error</p>"; } ?>
+    </main>
+</body>
+</html>

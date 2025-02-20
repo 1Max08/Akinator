@@ -1,0 +1,97 @@
+         <a href="logout.php">Se déconnecter</a>
+         <a href="classement.php">Classement</a>
+
+<main>
+       <section>
+           <h1>Account</h1>
+                   <h1>Welcome, <?= htmlspecialchars($username) ?> !</h1>
+
+           <h2>New task</h2>
+            <form class="contact-form2" action="#" method="post">
+                 <label for="name"></label>
+                 <input type="text" name="name" id="name" required/>
+        
+                 <label for="description">Message</label>
+                 <textarea id="description" name="description" rows="6" placeholder="" required></textarea>
+
+        
+                 <input type="radio" name="urgent" value="urgent" id="urgent">
+                 <label for="urgent">Urgent</label>
+        
+                 <input type="radio" name="important" value="important" class="demo5" id="important">
+                 <label for="important">Important</label>
+                 
+                  <button type="submit">Add</button>
+        
+            </form>
+       </section>
+       
+       <div>
+           
+           
+  <?php if (empty($tasks)): ?>
+    <p>Aucune tâche disponible.</p>
+<?php else: ?>
+<h2>Your tasks</h2>
+    <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+            <tr>
+                <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Title</th>
+                <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Content</th>
+                <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Urgent</th>
+                <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Important</th>
+                <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Status</th>
+                <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($tasks as $task): ?>
+            <tr style="border-bottom: 1px solid #ddd;">
+                <td style="padding: 8px;"><?= htmlspecialchars($task["name"]) ?></td>
+                <td style="padding: 8px;"><?= htmlspecialchars($task["description"]) ?></td>
+
+                <?php if($task["urgent"] === 1): ?>
+                    <td style="padding: 8px; color: red;">OUI</td>
+                <?php else: ?>
+                    <td style="padding: 8px;">NON</td>
+                <?php endif; ?>
+
+                <?php if($task["important"] === 1): ?>
+                    <td style="padding: 8px; color: orange;">OUI</td>
+                <?php else: ?>
+                    <td style="padding: 8px;">NON</td>
+                <?php endif; ?>
+
+                <td style="padding: 8px;">
+                    <?php if ($task['done'] == 0): ?>
+                        <form method="POST" action="taskStatus.php">
+                            <input type="hidden" name="task_id" value="<?= $task['id']; ?>">
+                            <button type="submit" name="done" style="padding: 6px 12px; background-color: green; color: white; border: none; cursor: pointer;">Marquer comme terminé</button>
+                        </form>
+                    <?php else: ?>
+                        <span style="color: green;">Cette tâche est déjà terminée.</span>
+                    <?php endif; ?>
+                </td>
+                <td style="padding: 8px;">
+                    <button style="padding: 6px 12px; background-color: blue; color: white; border: none; cursor: pointer;">
+                        <a href="edit.php?id=<?= $task['id'] ?>" style="color: white; text-decoration: none;">Edit</a>
+                    </button>
+                </td>
+                <td style="padding: 8px;">
+                    <button style="padding: 6px 12px; background-color: red; color: white; border: none; cursor: pointer;">
+                        <a href="delete.php?id=<?= $task['id'] ?>" style="color: white; text-decoration: none;">Delete</a>
+                    </button>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+<?php endif; ?>
+
+
+    </div>
+            
+            
+        
+
+</main>

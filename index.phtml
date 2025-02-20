@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <?php echo $questions[0]['question'];?>
+    <form action="index.php" method="POST">
+        <button type="submit" name="reponse" value="1">Oui</button>
+        <button type="submit" name="reponse" value="0">Non</button>
+    </form>
+<img src=<?php echo $result[0]['image'];?>>
+</body>
+</html>

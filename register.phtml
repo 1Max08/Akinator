@@ -1,27 +1,24 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Connexion</title>
-    <link rel="stylesheet" href="style.css" type="text/css" />
-</head>
+
 <body>
-    <a href="register.php">Création de compte</a>
-    <a href="login.php">Se connecter</a>
-    <main class="contact-form">
-    <form action="register.php" method="POST">
-        <label for="email">Username:</label>
-        <input type="text" id="username" name="username" required>
+  <main class="mainc">
+        <section class="contact-section">
+            <h2 class="inscription">Inscription</h2>
+            <div class="info">
+            <form class="contact-form" action="#" method="POST">
+                 <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Entrez votre username" required>
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" placeholder="Entrez votre email" required>
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" name="password" placeholder="Entrez votre mot de passe" required>
+                <button class="submit" type="submit">Créer un compte</button>
+            </form>
+            </div>
+             <?php if(isset($error)): ?>
         
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+        <p><?= $error ?></p>
         
-        <label for="password">Mot de passe:</label>
-        <input type="password" id="password" name="password" required>
-        
-        <button type="submit">Se connecter</button>
-    </form>
-    <?php if (isset($error)) { echo "<p>$error</p>"; } ?>
+        <?php endif; ?>
+        </section>
     </main>
 </body>
-</html>

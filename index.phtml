@@ -1,14 +1,10 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-</head>
-<body>
-    <?= $questions[0]['question'];?>
+<div class="accueil">
+    <div class="title">
+    <h2>Protakinator</h2>
+    <p class ="subtext">L'Akinator des protagonist de jeux vidéo</p>
+    </div>
+    <img src="style/image/protagonist.png">
     <form action="index.php" method="POST">
-        <button type="submit" name="reponse" value="1">Oui</button>
-        <button type="submit" name="reponse" value="0">Non</button>
+    <button class="sign" type="submit" name="sign" value="1">S'inscrire</button>
     </form>
-</body>
-</html>
+    </div>

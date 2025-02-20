@@ -5,8 +5,13 @@
     <title>Document</title>
 </head>
 <body>
-    <p><?= $result[0]['character_name'];?></p>
-<img src=<?= $result[0]['image'];?>>
-<p><?= $result[0]['description'];?></p>
+    <h2><?= $result[0]['character_name'];?></h2>
+<img class="result" src=<?= $result[0]['image'];?>>
+<p class ="description"><?= $result[0]['description'];?></p>
+<div class ="container">
+    <form action="quizz.php" method="POST">
+        <button class="sign" type="submit" name="reset" value="1">Recommencer</button>
+    </form>
+    </div>
 </body>
 </html>

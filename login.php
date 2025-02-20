@@ -6,7 +6,6 @@ session_start();
 
 $pdo = getConnexion();
             $_SESSION['question_id'] = getFirstQuestion()['id'];
-            var_dump($_SESSION['question_id']);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
@@ -21,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_id'] = $user['id'];
             // $_SESSION['username'] = $user['username'];
 
-            header('Location: index.php');
+            header('Location: quizz.php');
             exit;
         } else {
             $error = 'Email ou mot de passe incorrect';
@@ -31,4 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-include "login.phtml";
+$template = "login";
+
+include "layout.phtml";

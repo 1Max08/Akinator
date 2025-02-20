@@ -1,9 +1,12 @@
 <?php
 include "config/database.php";
 include "repository/userRepository.php";
+include "repository/questionRepository.php";
 session_start();
 
 $pdo = getConnexion();
+            $_SESSION['question_id'] = getFirstQuestion()['id'];
+            var_dump($_SESSION['question_id']);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
@@ -16,7 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($user && password_verify($password, $user['password'])) {
             $_SESSION['user_id'] = $user['id'];
-            $_SESSION['username'] = $user['username'];
+            // $_SESSION['username'] = $user['username'];
+
             header('Location: index.php');
             exit;
         } else {

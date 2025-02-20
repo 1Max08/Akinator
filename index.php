@@ -10,22 +10,31 @@ if (!isset($_SESSION['question_id'])) {
     $_SESSION['question_id'] = getFirstQuestion()['id'];
 }
 
-$result = getResult(2);
-$reponse = null;
-
 $questionId = $_SESSION['question_id'];
 $questions = getQuestion($questionId);
+$reponse = null;
+
+
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["reponse"])) {
     $reponse = (int) $_POST["reponse"];
+} else {
+    $reponse = 2;
 }
 
-$nextQuestion = null;
-if (!is_null($reponse)) {
-    $nextQuestion = getNextQuestion($reponse, $questionId);
-}
+var_dump($questionId);
+var_dump($reponse);
 
-if (empty($nextQuestion)) {
-    $nextQuestion = $result;
+$nextQuestion = getNextQuestion($reponse, $questionId);
+
+$resultId = getResultId($reponse, $questionId);
+
+var_dump($nextQuestion);
+var_dump($resultId);
+
+if (empty($nextQuestion) && !empty($resultId)) {
+    $_SESSION['result'] = $resultId;
+    header("Location: result.php");
+    exit();
 }
 
 if (!empty($nextQuestion) && isset($nextQuestion[0]['next_question'])) {
@@ -33,8 +42,6 @@ if (!empty($nextQuestion) && isset($nextQuestion[0]['next_question'])) {
     header("Location: index.php");
     exit();
 }
-var_dump($nextQuestion);
 
-var_dump($questionId);
 
 include "index.phtml";

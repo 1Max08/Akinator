@@ -1,5 +1,20 @@
 <body>
   <main>
-
+      <div class = "accueil">
+      <h2>Ancien Resultat</h2>
+      <p>Dernier personnage deviné : <?= htmlspecialchars($character_name) ?></p>
+      <p>Date : <?= htmlspecialchars($date) ?></p>
+    <!--<form class = "contact-form" method="POST">-->
+    <!--    <h2>Changer votre mot de pass</h2>-->
+    <!--            <label for="password">Mot de pass actuel</label>-->
+    <!--            <input type="password" id="old" name="old" placeholder="Ancient mot de pass" required>-->
+    <!--            <label for="password">Nouveau Mot de passe</label>-->
+    <!--            <input type="password" id="new" name="new" placeholder="Nouveau mot de pass" required>-->
+    <!--    <button class="submit" type="submit">Changer</button>-->
+    <!--</form>-->
+        <form action="quizz.php" method="POST">
+        <button class="sign" type="submit" name="reset" value="1">Retourner au jeux</button>
+    </form>
+    </div>
     </main>
 </body>
